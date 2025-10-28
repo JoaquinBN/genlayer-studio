@@ -1,0 +1,13 @@
+{
+  "provider": "openrouter",
+  "plugin": "openai-compatible",
+  "model": "openai/gpt-4o",
+  "config": {
+    "temperature": 0.75,
+    "max_tokens": 500
+  },
+  "plugin_config": {
+    "api_key_env_var": "OPENROUTER_API_KEY",
+    "api_url": "https://openrouter.ai/api"
+  }
+}

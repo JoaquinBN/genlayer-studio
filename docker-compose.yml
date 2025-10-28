@@ -91,6 +91,7 @@ services:
       - LOG_LEVEL=${LOG_LEVEL:-info}
       - GENVMROOT=/genvm
       - GENVM_TAG=v0.2.4
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
     ports:
       - "${RPCPORT}:${RPCPORT}"
     expose:
@@ -262,6 +263,7 @@ services:
       - WEBDRIVERHOST=${WEBDRIVERHOST}
       - WEBDRIVERPORT=${WEBDRIVERPORT}
       - REDIS_URL=${REDIS_URL:-redis://redis:6379/0}
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
     volumes:
       - ./.env:/app/.env
       - ./backend:/app/backend
