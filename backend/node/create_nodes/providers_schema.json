@@ -11,7 +11,8 @@
         "openai",
         "anthropic",
         "xai",
-        "google"
+        "google",
+        "openrouter"
       ]
     },
     "model": {
@@ -128,6 +129,20 @@
           },
           "model": {
             "enum": ["claude-3-7-sonnet-20250219", "claude-3-5-haiku-20241022", "claude-sonnet-4-20250514", "claude-opus-4-20250514"]
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "provider": { "const": "openrouter" }
+        }
+      },
+      "then": {
+        "properties": {
+          "plugin": {
+            "const": "openai-compatible"
           }
         }
       }
