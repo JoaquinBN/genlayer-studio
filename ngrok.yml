@@ -1,32 +1,29 @@
-version: "2"
-authtoken: YOUR_NGROK_AUTHTOKEN_HERE
+version: 3
 
-tunnels:
-  frontend:
-    addr: 8080
-    proto: http
-    subdomain: genlayer-frontend
-    # Uncomment the next line if you have a custom domain
-    # hostname: your-custom-domain.com
+agent:
+  authtoken: YOUR_NGROK_AUTHTOKEN_HERE
+  log_level: info
+  log_format: logfmt
+  log: /tmp/ngrok.log
+  web_addr: localhost:4040
+  inspect_db_size: 50000000  # 50MB
 
-  backend:
-    addr: 4000
-    proto: http
-    subdomain: genlayer-backend
-    # Uncomment the next line if you have a custom domain
-    # hostname: api.your-custom-domain.com
+endpoints:
+  - name: genlayer-frontend
+    url: genlayer-frontend.ngrok.app
+    upstream:
+      url: http://localhost:8080
+      protocol: http1
+
+  - name: genlayer-backend
+    url: genlayer-backend.ngrok.app
+    upstream:
+      url: http://localhost:4000
+      protocol: http1
 
   # Optional: If you want to expose the database for external connections
-  # postgres:
-  #   addr: 5432
-  #   proto: tcp
-  #   subdomain: genlayer-db
-
-# Global configuration
-log_level: info
-log_format: logfmt
-log: /tmp/ngrok.log
-
-# Web interface configuration
-web_addr: localhost:4040
-inspect_db_size: 50000000  # 50MB
+  # - name: genlayer-postgres
+  #   url: genlayer-postgres.ngrok.app
+  #   upstream:
+  #     url: tcp://localhost:5432
+  #     protocol: tcp

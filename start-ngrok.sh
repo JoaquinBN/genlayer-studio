@@ -27,12 +27,12 @@ if grep -q "YOUR_NGROK_AUTHTOKEN_HERE" ngrok.yml; then
 fi
 
 # Start ngrok with the config file
-echo "Starting ngrok with multiple tunnels..."
-ngrok start --all --config=ngrok.yml
+echo "Starting ngrok with multiple endpoints..."
+ngrok start --config=ngrok.yml genlayer-frontend genlayer-backend
 
-echo "ngrok tunnels started!"
+echo "ngrok endpoints started!"
 echo ""
 echo "Access the ngrok web interface at: http://localhost:4040"
-echo "Your tunnels:"
-echo "  Frontend: https://genlayer-frontend.ngrok.io"
-echo "  Backend:  https://genlayer-backend.ngrok.io"
+echo "Your endpoints:"
+echo "  Frontend: https://genlayer-frontend.ngrok.app"
+echo "  Backend:  https://genlayer-backend.ngrok.app"
