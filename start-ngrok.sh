@@ -27,12 +27,16 @@ if grep -q "YOUR_NGROK_AUTHTOKEN_HERE" ngrok.yml; then
 fi
 
 # Start ngrok with the config file
-echo "Starting ngrok with multiple endpoints..."
-ngrok start --config=ngrok.yml genlayer-frontend genlayer-backend
+echo "Starting ngrok with multiple tunnels (free plan - random URLs)..."
+ngrok start --config=ngrok.yml --all
 
-echo "ngrok endpoints started!"
+echo "ngrok tunnels started!"
 echo ""
-echo "Access the ngrok web interface at: http://localhost:4040"
-echo "Your endpoints:"
-echo "  Frontend: https://genlayer-frontend.ngrok.app"
-echo "  Backend:  https://genlayer-backend.ngrok.app"
+echo "⚠️  Free plan notice: URLs are randomly generated and change on each restart"
+echo ""
+echo "Access the ngrok web interface at: http://localhost:4040 to see your URLs"
+echo "Your tunnels will have random URLs like:"
+echo "  Frontend: https://abcd1234.ngrok-free.app (port 8080)"
+echo "  Backend:  https://efgh5678.ngrok-free.app (port 4000)"
+echo ""
+echo "💡 Tip: Check http://localhost:4040 for the exact URLs"

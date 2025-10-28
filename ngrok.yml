@@ -1,29 +1,26 @@
-version: 3
+version: 2
+authtoken: YOUR_NGROK_AUTHTOKEN_HERE
 
-agent:
-  authtoken: YOUR_NGROK_AUTHTOKEN_HERE
-  log_level: info
-  log_format: logfmt
-  log: /tmp/ngrok.log
-  web_addr: localhost:4040
-  inspect_db_size: 50000000  # 50MB
+# Global configuration
+log_level: info
+log_format: logfmt
+log: /tmp/ngrok.log
+web_addr: localhost:4040
+inspect_db_size: 50000000
 
-endpoints:
-  - name: genlayer-frontend
-    url: genlayer-frontend.ngrok.app
-    upstream:
-      url: http://localhost:8080
-      protocol: http1
+# Tunnels configuration (free plan gets random URLs)
+tunnels:
+  frontend:
+    addr: 8080
+    proto: http
+    # Free plan: no custom subdomain allowed
 
-  - name: genlayer-backend
-    url: genlayer-backend.ngrok.app
-    upstream:
-      url: http://localhost:4000
-      protocol: http1
+  backend:
+    addr: 4000
+    proto: http
+    # Free plan: no custom subdomain allowed
 
-  # Optional: If you want to expose the database for external connections
-  # - name: genlayer-postgres
-  #   url: genlayer-postgres.ngrok.app
-  #   upstream:
-  #     url: tcp://localhost:5432
-  #     protocol: tcp
+  # Optional third tunnel (you have 3 total on free plan)
+  # postgres:
+  #   addr: 5432
+  #   proto: tcp

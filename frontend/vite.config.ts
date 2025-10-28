@@ -20,19 +20,22 @@ export default defineConfig(({ mode }) => {
     preview: {
       port: 8080,
       strictPort: true,
-      allowedHosts: [
-        '.genlayer.com', // match all genlayer.com sub-domains
-        '.genlayerlabs.com', // match all genlayerlabs.com sub-domains
-        '.genlayer.org', // match all genlayer.org sub-domains
-        '.ngrok.io', // allow ngrok domains
-        '.ngrok-free.app', // allow ngrok free domains
-      ],
+      host: '0.0.0.0',
+      allowedHosts: 'all', // Allow all hosts for ngrok compatibility
+      cors: true,
     },
     server: {
       port: 8080,
       strictPort: true,
-      host: true,
+      host: '0.0.0.0',
       origin: 'http://0.0.0.0:8080',
+      cors: true,
+      disableHostCheck: true,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization, Content-Length, X-Requested-With',
+      },
       proxy:
         env.VITE_PROXY_ENABLED !== 'true'
           ? undefined
