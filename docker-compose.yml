@@ -47,6 +47,16 @@ services:
       - "${FRONTEND_PORT}"
     environment:
       - VITE_*
+      - HOST=0.0.0.0
+      - VITE_HOST=0.0.0.0
+    command: >
+      sh -c "
+      if [ '${FRONTEND_BUILD_TARGET:-final}' = 'dev' ]; then
+        npm run dev -- --host 0.0.0.0 --disable-host-check
+      else
+        npm run preview -- --host 0.0.0.0
+      fi
+      "
     restart: always
     security_opt:
       - "no-new-privileges=true"
@@ -55,8 +65,7 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
-    # For local dev, frontend is accessed directly on port 8080
-    # Remove Traefik labels since we're exposing the port directly
+    # Completely open for ngrok development
 
   jsonrpc:
     build:
