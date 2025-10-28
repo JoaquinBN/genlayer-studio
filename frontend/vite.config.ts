@@ -24,6 +24,8 @@ export default defineConfig(({ mode }) => {
         '.genlayer.com', // match all genlayer.com sub-domains
         '.genlayerlabs.com', // match all genlayerlabs.com sub-domains
         '.genlayer.org', // match all genlayer.org sub-domains
+        '.ngrok.io', // allow ngrok domains
+        '.ngrok-free.app', // allow ngrok free domains
       ],
     },
     server: {
