@@ -35,13 +35,13 @@ export default defineConfig(({ mode }) => {
               '/api': {
                 target: env.VITE_PROXY_JSON_RPC_SERVER_URL,
                 changeOrigin: true,
-                secure: true,
+                secure: false, // Internal Docker communication uses HTTP
               },
               '/socket.io': {
                 target: env.VITE_PROXY_WS_SERVER_URL,
                 ws: true,
                 changeOrigin: true,
-                secure: true,
+                secure: false, // Internal Docker communication uses HTTP
                 rewriteWsOrigin: true,
               },
             },
