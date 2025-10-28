@@ -27,7 +27,7 @@ export default defineConfig(({ mode }) => {
       port: 8080,
       strictPort: true,
       host: true,
-      origin: 'http://0.0.0.0:8080',
+      allowedHosts: true, // Allow all hosts for ngrok (dev mode)
       proxy:
         env.VITE_PROXY_ENABLED !== 'true'
           ? undefined
