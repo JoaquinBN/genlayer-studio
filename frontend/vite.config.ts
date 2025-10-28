@@ -21,6 +21,7 @@ export default defineConfig(({ mode }) => {
       port: 8080,
       strictPort: true,
       host: true,
+      allowedHosts: true, // Allow all hosts for ngrok
     },
     server: {
       port: 8080,
