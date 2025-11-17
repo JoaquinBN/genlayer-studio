@@ -92,7 +92,8 @@ services:
       - GENVMROOT=/genvm
       - GENVM_TAG=v0.2.4
       - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
-    # No direct ports - Traefik handles load balancing
+    ports:
+          - "${RPCPORT}:${RPCPORT}"
     expose:
       - "${RPCPORT}"
     volumes:
