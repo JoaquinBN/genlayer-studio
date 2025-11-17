@@ -159,6 +159,7 @@ services:
 
   webdriver:
     image: yeagerai/genlayer-genvm-webdriver:0.0.8
+    platform: linux/amd64  # Force x86_64 for ARM64 Mac compatibility
     shm_size: 2gb
     environment:
       - PORT=${WEBDRIVERPORT:-4444}
